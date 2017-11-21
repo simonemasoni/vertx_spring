@@ -1,0 +1,41 @@
+plugins {
+  id 'java'
+  id 'application'
+  id 'org.springframework.boot' version '1.5.8.RELEASE'
+}
+
+repositories {
+    jcenter()
+	mavenCentral()
+}
+
+dependencies {
+
+	compile group: 'io.vertx', name: 'vertx-web', version: '3.4.2'
+	compile group: 'io.vertx', name: 'vertx-config', version: '3.4.2'
+	compile group: 'postgresql', name: 'postgresql', version: '9.1-901.jdbc4'
+	
+	compile("org.springframework.boot:spring-boot-starter-web") {
+		exclude group: "org.springframework.boot", module: "spring-boot-starter-tomcat"
+	}
+	compile "org.thymeleaf:thymeleaf-spring4"
+	compile "nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect"
+	compile "org.springframework:spring-jdbc"
+	
+	
+    testCompile "junit:junit:4.12"
+	testCompile "org.mockito:mockito-core:2.11.0"
+	testCompile "io.vertx:vertx-codegen:3.4.2"
+	testCompile "io.vertx:vertx-unit:3.4.2"
+	testCompile "org.springframework:spring-test"
+	testCompile "com.jayway.restassured:rest-assured:2.4.0"
+	testCompile "org.assertj:assertj-core:2.0.0"
+}
+
+
+bootRepackage {
+	mainClass = 'com.test.VertxSpringApplication'
+}
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
